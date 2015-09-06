@@ -1,8 +1,12 @@
 (function(window){
 	var angular = window.angular;
-	angular.module('mean', ['ui.router', 'mean.auth'])
-	.config(['$stateProvider','$urlRouterProvider', function($stateProvider,$urlRouterProvider){
+	angular.module('mean', ['ui.router', 'mean.auth','mean.user'])
+	.config(['$stateProvider','$urlRouterProvider', '$locationProvider', function($stateProvider,$urlRouterProvider,$locationProvider){
 		$urlRouterProvider.otherwise('/home');
+		$locationProvider.html5Mode({
+			enabled: true,
+			requireBase: false
+		});
 		$stateProvider
 			.state('mean', {
 				abstract: true,
@@ -12,7 +16,7 @@
 						controller: 'navCtrl'
 					},
 					'': {
-						templateUrl: 'views/index.html'
+						template: '<ui-view/>'
 					},
 					footer: {
 						templateUrl: 'views/main/views/footer.html',
@@ -26,14 +30,19 @@
 				controller: 'homeCtrl'
 			})
 			.state('mean.login', {
-				url: '/login',
-				templateUrl: 'views/main/views/login.html',
+				url: '/auth/login',
+				templateUrl: 'views/auth/views/login.html',
 				controller: 'loginCtrl'
 			})
 			.state('mean.register', {
-				url: '/register',
-				templateUrl: 'views/main/views/register.html',
+				url: '/auth/register',
+				templateUrl: 'views/auth/views/register.html',
 				controller: 'registerCtrl'
+			})
+			.state('mean.user', {
+				url: '/user',
+				templateUrl: 'views/user/views/profile.html',
+				controller: 'profileCtrl'
 			})
 	}])
 }(window));
