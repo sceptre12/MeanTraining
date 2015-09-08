@@ -1,7 +1,7 @@
-(function(window){
+(function (window) {
 	var angular = window.angular;
 	angular.module('mean')
-	.controller('homeCtrl', ['$scope', function($scope){
-		
+		.controller('homeCtrl', ['$scope', function ($scope) {
+
 	}])
 }(window));

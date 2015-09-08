@@ -19,14 +19,16 @@
                 </li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right" >
-                <li ng-hide="currentUser" ng-repeat="navLogin in loginNav" >
+                <li ng-repeat="navLogin in loginNav" ng-hide="currentUser" >
                     <a ui-sref="{{navLogin.link}}">
                         {{navLogin.name}}
                     </a>
                 </li>
-               <!--  <li ng-show="currentUser">
-                    <a ng-click="nav.logout()">Log Out</a>
-                </li> -->
+               <li ng-repeat="userNav in userNavs" ng-show="currentUser">
+                 <a ui-sref="{{userNav.link}}">
+                     {{userNav.name}}
+                 </a>
+               </li>
             </ul>
         </div>
         <!--/.nav-collapse -->

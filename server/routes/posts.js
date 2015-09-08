@@ -3,20 +3,23 @@ var posts = require('../models/postschema'),
 	router = express.Router();
 
 	//route for the getting the posts
-	router.route('/todo')
+	router.route('/posts/:userName')
 		.get(function(req,res){
-			posts.find(function(err, posts){
-				if(err) return res.send(err);
-				res.json(posts);
-			});		
+			console.log('Inside of Posts get ')
+			console.log(req.params.userName)
+			posts.find({user: req.params.userName}, function(err,post){
+				console.log(post);
+				if (err) res.send(err);
+				res.json(post);
+			});
 		})
 		.post(function(req, res){
-			var post = new posts(req.body);
+			console.log('inside of Posts post')
+			var post = new posts(req.body.posts);
 			post.save(function(err){
 				if(err) return res.send(err);
-				res.send({message: "movie added"});
+				res.send({posted: "success"});
 			});
 		})
 
 	module.exports = router;
-

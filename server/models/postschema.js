@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
  // Posts Schema
 var postsSchema = mongoose.Schema({
-	user: mongoose.Schema.Types.ObjectId,
+	user: String,
 	title: String,
 	content: String
 });

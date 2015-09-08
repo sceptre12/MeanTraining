@@ -5,7 +5,7 @@ var express = require('express'),
 
 
 // handles request coming in for all angular js routes
-router.get('*', function(req,res){
+router.get('/*', function(req,res){
 	res.sendfile('./client/views/index.html');
 });
 

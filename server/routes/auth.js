@@ -2,9 +2,9 @@ var express = require('express'),
 	users = require('../models/userschema'),
 	router = express.Router();
 // checking if user exists
-router.route('/login')	
+router.route('/login')
 	.post(function(req,res){
-		console.log('Inside of post request')
+		console.log('Inside of post request for login')
 		var userData = req.body.login;
 		console.log(userData);
 		// searches for the user with this email
@@ -15,7 +15,7 @@ router.route('/login')
 			function(err, email){
 				if(err) {
 					console.log('Error occured')
-					return res.send(err); 
+					return res.send(err);
 				}
 				return res.send({data: email});
 			}
@@ -24,12 +24,13 @@ router.route('/login')
  // registers user
  router.route('/register')
  	.post(function(req,res){
+		console.log('Inside of post request for register')
  		var user = new users(req.body.register);
  		console.log(user)
  		// saves the new user object in the db
  		user.save(function(err){
  			if(err) return res.send(err);
- 			res.send({data: 'success'})
+ 			res.send({ saved: 'success', data: user});
  		})
  	})
 
