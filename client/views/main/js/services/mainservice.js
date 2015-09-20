@@ -18,6 +18,9 @@
 						{
 							name: 'profile',
 							link: 'mean.user'
+					}, {
+						name: 'logout',
+						link: 'mean.home'
 					}
 				]
 				}

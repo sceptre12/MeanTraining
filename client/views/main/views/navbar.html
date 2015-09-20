@@ -25,7 +25,7 @@
                     </a>
                 </li>
                <li ng-repeat="userNav in userNavs" ng-show="currentUser">
-                 <a ui-sref="{{userNav.link}}">
+                 <a ui-sref="({user: {{UserNav}})" ui-sref-opts="{{currentUser.name}}" ng-click="logout(userNav)">
                      {{userNav.name}}
                  </a>
                </li>

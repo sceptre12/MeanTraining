@@ -8,8 +8,8 @@
 					Checks if the mean.user state is being transitioned to
 					and then checks if the currentUser property is truthy
 				*/
-
-				if(fromState.name === ""){
+			
+				if(fromState.name === "" && toState.name === "mean.user"){
 					authservice.login({email : session.getItem('userEmail')})
 					.then(function(response){
 						console.log(response);
@@ -26,7 +26,7 @@
 					})
 				}
 
-				
+
 				if (toState.name === "mean.user" && !$rootScope.currentUser ){
 					$state.go('mean.login');
 				}
